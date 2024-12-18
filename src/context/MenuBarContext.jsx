@@ -3,7 +3,7 @@ import {useState, createContext } from 'react';
 const MenuContext = createContext();
 
 export const MenuContextProvider = ({ children }) =>{
-    const [showSideBar, setShowSideBar] = useState(true);
+    const [showSideBar, setShowSideBar] = useState(false);
 
     const handleSideBar = () =>{
         setShowSideBar((val) => !val);

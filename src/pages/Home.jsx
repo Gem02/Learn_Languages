@@ -7,34 +7,55 @@ const Home = () => {
       
       
       {/* Hero Section */}
-      <div className=" bg-[url('/src/assets/images/1691055810.png')] dark:bg-[url('/src/assets/images/pexels-marek-piwnicki-3907296-8193804.jpg')] bg-center bg-cover bg-opacity-70 mx-auto w-full px-4 sm:px-6 lg:px-8 mt-16 text-center h-screen lg:h-auto lg:py-44 flex flex-col items-center justify-center">
-          
+      <div className="bg-[url('/src/assets/images/1691055810.png')] dark:bg-[url('/src/assets/images/pexels-marek-piwnicki-3907296-8193804.jpg')] bg-center bg-cover bg-opacity-70 mx-auto w-full px-4 sm:px-6 lg:px-8 mt-16 text-center h-[calc(100vh-4rem)] lg:h-auto lg:py-44 flex flex-col items-center justify-center">
+        <h1 className="mx-auto max-w-5xl font-display text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-200 sm:text-7xl">
+          <span className="inline-block">
+            Master
+            <span className="relative whitespace-nowrap text-blue-600">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 418 42"
+                className="absolute top-2/3 left-0 h-[0.58em] w-full fill-blue-300/70"
+                preserveAspectRatio="none"
+              >
+                <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"></path>
+              </svg>
+              <span className="relative">Languages</span>
+            </span>
+          </span>
+          <span className="inline-block">with AI</span>
+        </h1>
 
-          <h1 className="mx-auto max-w-5xl font-display text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-200  sm:text-7xl">
-              <span className="inline-block">Master
-                  <span className="relative whitespace-nowrap text-blue-600">
-                  <svg aria-hidden="true" viewBox="0 0 418 42" className="absolute top-2/3 left-0 h-[0.58em] w-full fill-blue-300/70" preserveAspectRatio="none"><path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"></path></svg>
-                  <span className="relative">Languages</span></span>
-              </span>
-              <span className="inline-block">with AI</span>
-          </h1>
+        <p className="mx-auto mt-9 max-w-2xl font-medium text-lg dark:text-slate-200 tracking-tight text-slate-700 sm:mt-6">
+          <span className="inline-block">
+            Discover the future of language learning. With AI-powered tools, you can
+            improve grammar, expand vocabulary, and enjoy personalized lessons—all at
+            your fingertips.
+          </span>
+        </p>
 
-          <p className="mx-auto mt-9 max-w-2xl font-medium text-lg dark:text-slate-200 tracking-tight text-slate-700 dark:text-slate-200 sm:mt-6">
-              <span className="inline-block ">Discover the future of language learning. With AI-powered tools, you can improve grammar, expand vocabulary, and enjoy personalized lessons—all at your fingertips.</span>
-          </p>
-
-          <div className="mt-12 flex flex-col justify-center gap-y-5 sm:mt-10 sm:flex-row sm:gap-y-0 sm:gap-x-6 w-full">
-              <Link to={"signup"} className="group flex items-center justify-center rounded-full py-3 px-12 text-sm font-semibold bg-slate-900 dark:bg-blue-700 text-white hover:bg-slate-700 hover:text-slate-100 focus-visible:outline-slate-900" >
-                  <span className="ml-3">Get Started</span>
-              </Link>
-              <div className="relative flex flex-1 flex-col items-stretch sm:flex-none" data-headlessui-state="">
-                  <Link to={'/try'} className="group inline-flex ring-1 items-center justify-center rounded-full py-3 px-12 text-sm focus:outline-none ring-slate-300 text-slate-700 dark:font-medium hover:text-slate-900 dark:text-slate-200  hover:ring-slate-400 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300 animate-fade-in-right" type="button">
-                     <span className="ml-3">Try Now</span>
-                  </Link>
-              </div>
+        <div className="mt-12 flex flex-col justify-center gap-y-5 sm:mt-10 sm:flex-row sm:gap-y-0 sm:gap-x-6 w-full">
+          <Link
+            to={"signup"}
+            className="group flex items-center justify-center rounded-full py-3 px-12 text-sm font-semibold bg-slate-900 dark:bg-blue-700 text-white hover:bg-slate-700 hover:text-slate-100 focus-visible:outline-slate-900"
+          >
+            <span className="ml-3">Get Started</span>
+          </Link>
+          <div
+            className="relative flex flex-1 flex-col items-stretch sm:flex-none"
+            data-headlessui-state=""
+          >
+            <Link
+              to={"/try"}
+              className="group inline-flex ring-1 items-center justify-center rounded-full py-3 px-12 text-sm focus:outline-none ring-slate-300 text-slate-700 dark:font-medium hover:text-slate-900 dark:text-slate-200 hover:ring-slate-400 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300 animate-fade-in-right"
+              type="button"
+            >
+              <span className="ml-3">Try Now</span>
+            </Link>
           </div>
-
+        </div>
       </div>
+
 
 
 
@@ -43,7 +64,7 @@ const Home = () => {
         <h2 className="text-4xl dark:text-slate-200 font-bold text-gray-800 mb-6 text-center">
           Why Choose AI Language Tutor?
         </h2>
-        <p className="text-lg dark:text-slate-200 text-gray-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto text-center">
+        <p className="text-lg dark:text-slate-200 text-gray-600 mb-12 max-w-2xl mx-auto text-center">
           Empower yourself with cutting-edge AI technology designed to take your language skills to the next level. 
           Discover why millions trust us for their learning journey.
         </p>
@@ -186,7 +207,7 @@ const Home = () => {
             <h2 className="text-4xl dark:text-slate-100 font-bold text-gray-800 leading-snug mb-4">
               Unlock Language Mastery with Advanced AI
             </h2>
-            <p className="text-lg dark:text-slate-200 text-gray-600 dark:text-slate-200 mb-6">
+            <p className="text-lg  text-gray-600 dark:text-slate-200 mb-6">
               Explore a revolutionary way to learn languages, tailored specifically for you. From pronunciation to grammar, our platform is designed to bring out the best in your language-learning journey.
             </p>
             <ul className="space-y-4 dark:text-slate-200">
@@ -217,21 +238,21 @@ const Home = () => {
               <label className="flex items-center">
                 <input
                   type="checkbox"
-                  className="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                  className="form-checkbox accent-slate-600 dark:bg-slate-500 h-5 w-5 rounded focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                 />
                 <span className="ml-3 text-gray-800 dark:text-slate-400">Grammar Assistance</span>
               </label>
               <label className="flex items-center">
                 <input
                   type="checkbox"
-                  className="form-checkbox h-5 w-5 text-green-600 rounded focus:ring focus:ring-green-300 focus:ring-opacity-50"
+                  className="form-checkbox accent-slate-600 dark:bg-slate-500 h-5 w-5 text-green-600 rounded focus:ring focus:ring-green-300 focus:ring-opacity-50"
                 />
                 <span className="ml-3 text-gray-800 dark:text-slate-400">Speech Analysis</span>
               </label>
               <label className="flex items-center">
                 <input
                   type="checkbox"
-                  className="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                  className="form-checkbox accent-slate-600 dark:bg-slate-500 h-5 w-5 text-blue-600 rounded focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                 />
                 <span className="ml-3 text-gray-800 dark:text-slate-400">Vocabulary Expansion</span>
               </label>
@@ -254,7 +275,7 @@ const Home = () => {
           <h2 className="text-2xl dark:text-slate-300 font-semibold mb-2 text-blue-900">
             Grammar Perfection
           </h2>
-          <p className="text-gray-700">
+          <p className="text-gray-700 dark:text-slate-400">
             Instantly improve your writing with cutting-edge AI grammar tools.
           </p>
         </div>
@@ -267,7 +288,7 @@ const Home = () => {
           <h2 className="text-2xl dark:text-slate-300 font-semibold mb-2 text-green-900">
             Vocabulary Booster
           </h2>
-          <p className="text-gray-700">
+          <p className="text-gray-700 dark:text-slate-400">
             Learn new words daily and expand your linguistic horizons.
           </p>
         </div>
@@ -280,7 +301,7 @@ const Home = () => {
           <h2 className="text-2xl dark:text-slate-300 font-semibold mb-2 text-blue-900">
             Personalized Lessons
           </h2>
-          <p className="text-gray-700">
+          <p className="text-gray-700 dark:text-slate-400">
             Enjoy tailored lessons based on your goals and proficiency.
           </p>
         </div>
@@ -374,7 +395,7 @@ const Home = () => {
           <p className="text-lg dark:text-slate-200 leading-relaxed">
             Discover the tools and techniques used by thousands of learners to elevate their skills and reach their goals. Whether you&apos;re a beginner or a pro, our AI-driven platform adapts to your needs.
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+          <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-slate-400">
             <li className='dark:text-slate-400'>Custom-tailored lessons to match your pace and preferences.</li>
             <li className='dark:text-slate-400'>Real-time grammar correction and vocabulary enhancements.</li>
             <li className='dark:text-slate-400'>Step-by-step guidance with progress tracking.</li>
@@ -383,7 +404,7 @@ const Home = () => {
             <button className="bg-blue-500 text-white font-semibold py-3 px-6 rounded-full hover:bg-blue-600 transition duration-200">
               Start Learning
             </button>
-            <button className="bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-full hover:bg-gray-300 transition duration-200">
+            <button className="bg-gray-200 text-gray-700 dark:text-slate-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-300 transition duration-200">
               Learn More
             </button>
           </div>

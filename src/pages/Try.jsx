@@ -25,7 +25,7 @@ const TryPage = () => {
   };
 
   return (
-    <div className=" mt-16 min-h-screen bg-gray-100 text-gray-800">
+    <div className=" mt-16 min-h-screen bg-gray-100 dark:text-slate-200 dark:bg-slate-900 text-gray-800">
       {/* Header */}
       <header className="bg-blue-500 text-center mt-10 text-white p-8">
         <h1 className="text-2xl sm:text-3xl font-bold">Try Our AI Tools</h1>
@@ -37,7 +37,7 @@ const TryPage = () => {
         <button
           onClick={() => setSelectedTab("translate")}
           className={`px-2 text-sm sm:px-4 py-2 rounded-t-lg ${
-            selectedTab === "translate" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800"
+            selectedTab === "translate" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800 dark:text-slate-200 dark:bg-slate-950 dark:ring-1"
           }`}
         >
           Translation Tool
@@ -45,7 +45,7 @@ const TryPage = () => {
         <button
           onClick={() => setSelectedTab("analyze")}
           className={` px-1 text-sm sm:px-4 py-2 rounded-t-lg ${
-            selectedTab === "analyze" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800"
+            selectedTab === "analyze" ? "bg-blue-500 text-white" : "bg-gray-200 dark:text-slate-200 dark:bg-slate-950 dark:ring-1 text-gray-800"
           }`}
         >
           AI vs. Human Text Detector
@@ -53,12 +53,12 @@ const TryPage = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="bg-white m-4 shadow-md rounded-lg mx-auto w-[95%] max-w-5xl p-2 sm:p-6">
+      <div className="bg-white dark:bg-slate-950 m-4 shadow-md rounded-lg mx-auto w-[95%] max-w-5xl p-2 sm:p-6">
         {selectedTab === "translate" && (
           <div>
-            <h2 className="text-xl font-semibold mb-4">Text Translation</h2>
+            <h2 className="text-xl dark:text-slate-200 font-semibold mb-4">Text Translation</h2>
             <textarea
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-3 border dark:border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-slate-900"
               rows="4"
               placeholder="Enter text to translate..."
               value={textInput}
@@ -66,7 +66,7 @@ const TryPage = () => {
             ></textarea>
             <div className="mt-4 flex items-center space-x-4">
               <select
-                className="p-2 border rounded-md"
+                className="p-2 border rounded-md dark:bg-slate-900"
                 value={selectedLanguage}
                 onChange={(e) => setSelectedLanguage(e.target.value)}
               >
@@ -84,7 +84,7 @@ const TryPage = () => {
               </button>
             </div>
             {translatedText && (
-              <div className="mt-4 p-3 bg-gray-100 rounded border">
+              <div className="mt-4 p-3 bg-gray-100 dark:bg-slate-900 rounded border">
                 <p className="font-semibold">Translation:</p>
                 <p>{translatedText}</p>
               </div>
@@ -96,7 +96,7 @@ const TryPage = () => {
           <div>
             <h2 className="text-xl font-semibold mb-4">AI vs. Human Text Detector</h2>
             <textarea
-              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-3 border dark:border-0 dark:bg-slate-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
               rows="4"
               placeholder="Paste text to analyze..."
               value={textInput}
@@ -109,7 +109,7 @@ const TryPage = () => {
               Analyze Text
             </button>
             {analysisResult && (
-              <div className="mt-4 p-3 bg-gray-100 rounded border">
+              <div className="mt-4 p-3 bg-gray-100 dark:bg-slate-900 rounded border">
                 <p className="font-semibold">Analysis Result:</p>
                 <p>{analysisResult}</p>
               </div>
