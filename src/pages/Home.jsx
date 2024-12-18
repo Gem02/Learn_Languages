@@ -7,7 +7,7 @@ const Home = () => {
       
       
       {/* Hero Section */}
-      <div className=" bg-[url('/src/assets/images/1691055810.png')] bg-center bg-cover mx-auto w-full px-4 sm:px-6 lg:px-8 pt-12 pb-16 text-center lg:pt-32">
+      <div className=" bg-[url('/src/assets/images/1691055810.png')] bg-center bg-cover mx-auto w-full px-4 sm:px-6 lg:px-8 py-16 text-center lg:pt-32">
           
 
           <h1 className="mx-auto max-w-5xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">

@@ -25,7 +25,7 @@ const TryPage = () => {
   };
 
   return (
-    <div className=" mt-11 lg:mt-14 min-h-screen bg-gray-100 text-gray-800">
+    <div className=" mt-16 min-h-screen bg-gray-100 text-gray-800">
       {/* Header */}
       <header className="bg-blue-500 text-center mt-10 text-white p-8">
         <h1 className="text-2xl sm:text-3xl font-bold">Try Our AI Tools</h1>
