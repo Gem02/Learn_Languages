@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className=" px-4 py-10 ">
+    <div className=" px-4 mt-16 ">
       
       
       {/* Hero Section */}

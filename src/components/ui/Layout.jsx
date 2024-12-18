@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
         {/* Footer */}
         <footer className="w-full bg-gray-200 text-center py-4 border-t border-gray-300">
           <p className="text-sm text-gray-600">
-            © 2024 Your Project Name. All rights reserved.
+            © 2024 Godwin Mangai. All rights reserved.
           </p>
         </footer>
       </div>
