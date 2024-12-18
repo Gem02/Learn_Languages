@@ -11,19 +11,19 @@ const MainLessonPage = () => {
   return (
     <Layout>
       <div className="py-20 flex">
-        <div className="flex flex-col  bg-gray-100 min-h-screen">
+        <div className="flex flex-col  bg-gray-100 dark:bg-slate-900 min-h-screen">
           {/* Header */}
-          <header className="flex items-center flex-wrap justify-between p-6 bg-white shadow-md">
+          <header className="flex items-center flex-wrap justify-between p-6 bg-white dark:bg-slate-950 shadow-md">
             <div>
-              <h1 className="text-lg font-bold">Learn {selectedLanguage}</h1>
-              <p className="text-gray-600 mt-2">AI-powered lessons for mastering languages.</p>
+              <h1 className="text-lg font-bold dark:text-slate-200">Learn {selectedLanguage}</h1>
+              <p className="text-gray-600 mt-2 dark:text-slate-400">AI-powered lessons for mastering languages.</p>
             </div>
             <div className="flex items-center flex-wrap gap-2 mt-2">
               {/* Language Selector */}
               <select
                 value={selectedLanguage}
                 onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded bg-white shadow-sm"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-800 rounded bg-white dark:bg-slate-950 dark:text-slate-300 shadow-sm"
               >
                 {languages.map((lang) => (
                   <option key={lang} value={lang}>
@@ -42,7 +42,7 @@ const MainLessonPage = () => {
           <main className="p-6">
             {/* AI Recommendations */}
             <section className="mb-8">
-              <h2 className="text-lg font-bold mb-4">AI-Powered Recommendations</h2>
+              <h2 className="text-lg font-bold mb-4 dark:text-slate-200">AI-Powered Recommendations</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <FeatureCard
                   icon={<FaPlay />}
@@ -64,7 +64,7 @@ const MainLessonPage = () => {
 
             {/* Featured Lessons */}
             <section className="mb-8">
-              <h2 className="text-lg font-bold mb-4">Featured Lessons for {selectedLanguage}</h2>
+              <h2 className="text-lg font-bold mb-4 dark:text-slate-200">Featured Lessons for {selectedLanguage}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <LessonCard
                   title="Beginner Vocabulary"
@@ -92,12 +92,12 @@ const MainLessonPage = () => {
 
 // Feature Card Component
 const FeatureCard = ({ icon, title, description }) => (
-  <div className="bg-white p-6 shadow rounded-lg hover:shadow-lg transition-shadow">
+  <div className="bg-white dark:bg-slate-950 p-6 shadow rounded-lg hover:shadow-lg transition-shadow">
     <div className="flex items-center space-x-4 mb-4">
       <div className="text-blue-500 text-lg">{icon}</div>
       <div>
-        <h3 className="text-lg font-bold">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <h3 className="text-lg font-bold dark:text-slate-200">{title}</h3>
+        <p className="text-gray-600 dark:text-slate-400">{description}</p>
       </div>
     </div>
   </div>
@@ -105,12 +105,12 @@ const FeatureCard = ({ icon, title, description }) => (
 
 // Lesson Card Component
 const LessonCard = ({ title, description, icon }) => (
-  <div className="bg-white p-6 shadow rounded-lg hover:shadow-lg transition-shadow">
+  <div className="bg-white dark:bg-slate-950 p-6 shadow rounded-lg hover:shadow-lg transition-shadow">
     <div className="flex items-center space-x-4 mb-4">
       <div className="text-blue-500 text-lg">{icon}</div>
       <div>
-        <h3 className="text-lg font-bold">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <h3 className="text-lg font-bold dark:text-slate-200">{title}</h3>
+        <p className="text-gray-600 dark:text-slate-400">{description}</p>
       </div>
     </div>
   </div>

@@ -20,9 +20,9 @@ const SpeakingPage = () => {
   return (
     <Layout >
     <div className="py-6 sm:px-6 mt-16">
-      <h1 className="text-3xl font-bold mb-4">Speaking Practice</h1>
+      <h1 className="text-3xl font-bold mb-4 dark:text-slate-200">Speaking Practice</h1>
       <div className="border p-4 rounded-lg mb-4">
-        <p className="text-lg">"The quick brown fox jumps over the lazy dog."</p>
+        <p className="text-lg dark:text-slate-400">&quot;The quick brown fox jumps over the lazy dog.&quot;</p>
       </div>
       <button
         onClick={handleStartRecording}
@@ -34,7 +34,7 @@ const SpeakingPage = () => {
         <FaMicrophone className="mr-2" />
         {isRecording ? "Recording..." : "Start Recording"}
       </button>
-      {feedback && <div className="mt-4 text-xl text-center">{feedback}</div>}
+      {feedback && <div className="mt-4 text-xl text-center dark:text-slate-400">{feedback}</div>}
     </div>
     </Layout>
   );

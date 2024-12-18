@@ -11,15 +11,15 @@ const GrammarPage = () => {
   return (
     <Layout>
     <div className=" py-6 sm:px-6 mt-16">
-      <h1 className="text-3xl font-bold mb-4">Grammar Practice</h1>
+      <h1 className="text-3xl dark:text-slate-200 font-bold mb-4">Grammar Practice</h1>
       <div className="space-y-4">
         {tips.map((tip, index) => (
           <div
             key={index}
             className="border p-4 rounded-lg shadow hover:shadow-lg transition"
           >
-            <h2 className="text-xl font-semibold">{tip.rule}</h2>
-            <p className="text-sm text-gray-600">{tip.example}</p>
+            <h2 className="text-xl font-semibold dark:text-slate-200">{tip.rule}</h2>
+            <p className="text-sm text-gray-600 dark:text-slate-400">{tip.example}</p>
           </div>
         ))}
       </div>

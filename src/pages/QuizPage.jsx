@@ -35,10 +35,10 @@ const QuizPage = () => {
   return (
     <Layout>
     <div className="py-6 sm:px-6 mt-16">
-      <h1 className="text-3xl font-bold mb-4">Quiz</h1>
+      <h1 className="text-3xl dark:text-slate-200 font-bold mb-4">Quiz</h1>
       {!showResults ? (
         <div>
-          <h2 className="text-xl mb-2">
+          <h2 className="text-xl dark:text-slate-400 mb-2">
             {questions[currentQuestion].question}
           </h2>
           <ul>
@@ -46,19 +46,19 @@ const QuizPage = () => {
               <li
                 key={index}
                 onClick={() => handleAnswer(option)}
-                className="p-3 mb-2 border rounded hover:bg-blue-100 cursor-pointer"
+                className="p-3 mb-2 hover:bg-blue-100 dark:hover:bg-gray-950 dark:text-slate-400 cursor-pointer"
               >
                 {option}
               </li>
             ))}
           </ul>
-          <div className="text-sm mt-4">
+          <div className="text-sm mt-4 dark:text-slate-300">
             Question {currentQuestion + 1} of {questions.length}
           </div>
         </div>
       ) : (
         <div>
-          <h2 className="text-xl mb-4">
+          <h2 className="text-xl dark:text-slate-400 mb-4">
             You scored {score} out of {questions.length}!
           </h2>
           <button

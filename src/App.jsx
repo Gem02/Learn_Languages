@@ -20,39 +20,41 @@ import QuizPage from './pages/QuizPage'
 import SpeakingPage from './pages/SpeakingPage'
 import GrammerPage from './pages/GrammerPage'
 import VocabularyPage from './pages/VocabularyPage'
+import { MenuContextProvider } from './context/MenuBarContext';
 import {useState} from 'react'
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(true)
   console.log(setLoggedIn)
   return (
-    
-    <div className=" w-full flex flex-col min-h-screen">
-        {loggedIn ? (<LogedNav />) : (<Navbar />)}
-      <div className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/learn" element={<Learn />} />
-          <Route path="/try" element={<TryPage />} />
-          <Route path="/practice" element={<PracticePage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/lesson" element={<MainLessonPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/help" element={<HelpPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/learning" element={<LearningPage />} />
-          <Route path="/quizPage" element={<QuizPage />} />
-          <Route path="/speakingPage" element={<SpeakingPage />} />
-          <Route path="/vocabularyPage" element={<VocabularyPage />} />
-          <Route path="/grammerPage" element={<GrammerPage />} />
-          <Route path="/learn" element={<GrammarCorrection />} />
-          <Route path="/sample" element={<Sample />} />
-        </Routes>
+    <MenuContextProvider>
+      <div className=" w-full bg-white dark:bg-slate-950 flex flex-col min-h-screen">
+          {loggedIn ? (<LogedNav />) : (<Navbar />)}
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/learn" element={<Learn />} />
+            <Route path="/try" element={<TryPage />} />
+            <Route path="/practice" element={<PracticePage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/lesson" element={<MainLessonPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/help" element={<HelpPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/learning" element={<LearningPage />} />
+            <Route path="/quizPage" element={<QuizPage />} />
+            <Route path="/speakingPage" element={<SpeakingPage />} />
+            <Route path="/vocabularyPage" element={<VocabularyPage />} />
+            <Route path="/grammerPage" element={<GrammerPage />} />
+            <Route path="/learn" element={<GrammarCorrection />} />
+            <Route path="/sample" element={<Sample />} />
+          </Routes>
+        </div>
+        {loggedIn ? null : (<Footer />)}
       </div>
-      {loggedIn ? null : (<Footer />)}
-    </div>
+    </MenuContextProvider>
     
   );
 };

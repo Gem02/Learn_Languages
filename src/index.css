@@ -11,3 +11,7 @@
 .bg-pattern {
   background-image: url("https://www.transparenttextures.com/patterns/hexellence.png");
 }
+
+html {
+  transition: background-color 0.3s, color 0.3s;
+}

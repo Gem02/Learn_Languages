@@ -11,19 +11,19 @@ const VocabularyPage = () => {
   return (
     <Layout>
     <div className="py-6 sm:px-6 mt-16">
-      <h1 className="text-3xl font-bold mb-4">Vocabulary Builder</h1>
+      <h1 className="text-3xl dark:text-slate-200 font-bold mb-4">Vocabulary Builder</h1>
       <div className="space-y-4">
         {words.map((entry, index) => (
           <div
             key={index}
             className="border p-4 rounded-lg shadow hover:shadow-lg transition"
           >
-            <h2 className="text-xl font-semibold">{entry.word}</h2>
-            <p className="text-sm text-gray-600">{entry.meaning}</p>
+            <h2 className="text-xl dark:text-slate-200 font-semibold">{entry.word}</h2>
+            <p className="text-sm dark:text-slate-400 text-gray-600">{entry.meaning}</p>
           </div>
         ))}
       </div>
-      <button className="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center">
+      <button className="mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center">
         <FaRandom className="mr-2" />
         Discover New Word
       </button>
