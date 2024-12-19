@@ -19,7 +19,7 @@ export const translateText = async (text, targetLanguage) => {
 
 export const analyzeText = async (text) => {
   try {
-    const response = await axios.post("/api/detectText", { text });
+    const response = await axios.post("https://gemlang.vercel.app/api/detectText", { text });
     console.log("finally na", response.data);
     return response.data;
   } catch (error) {
