@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {Menu } from 'lucide-react';
 import SideMenu from "./SideMenu";
 import DarkModeToggle from '../ui/DarkmodeBtn'
+import { LanguageIcon } from '../../assets/images/exports'
 
 const LogedNav = () => {
     const {showSideBar, handleSideBar} = useMenuBar()
@@ -13,7 +14,10 @@ const LogedNav = () => {
 
         {/* <!-- top bar left --> */}
         <div className="flex items-center justify-center">
-            <Link to={'/'} className="font-bold text-2xl mb-1 dark:text-slate-100">Ai Tutor</Link>
+            <Link to={'/'} onClick={handleSideBar} className="font-bold text-2xl mb-1 dark:text-slate-100 flex gap-1 scale-75 sm:scale-100">
+                <img src={LanguageIcon} alt="icon" className='h-8' />
+                <p>My<span className='text-blue-500'> Tutor</span></p>
+            </Link>
             <Menu onClick={handleSideBar}  className=" ml-2 w-6 h-6 text-gray-700 dark:text-slate-400 hover:text-black lg:hidden cursor-pointer" />
             <ul aria-label="top bar left" aria-orientation="horizontal" className="hidden sm:flex dark:text-slate-300 ">
                     {/* <!-- add button --> */}

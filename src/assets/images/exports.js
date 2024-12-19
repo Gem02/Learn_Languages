@@ -7,6 +7,7 @@ import {default as Ai} from '../images/pexels-michelangelo-buonarroti-8728380.jp
 import {default as China} from '../images/pexels-enginakyurt-1498273.jpg'
 import {default as Learn} from '../images/pexels-vlada-karpovich-4050405.jpg'
 import {default as Reading} from '../images/pexels-readymade-4022010.jpg'
+import {default as LanguageIcon} from '../images/icons8-language-48.png'
 
 
-export {LearnSmart, Grammer, ABC, China, Personal, Ai, BgImage, Learn, Reading};
+export {LearnSmart, Grammer, ABC, China, Personal, Ai, BgImage, Learn, Reading, LanguageIcon};
