@@ -44,8 +44,7 @@ import { translateText, analyzeText } from '../utils/api';
 
     try {
       const result = await analyzeText(analyzeTextInput);
-      const feedback = result?.feedback || "No feedback";
-      setAnalysisResult(feedback);
+      setAnalysisResult(result);
     } catch (error) {
       console.error(error.message);
       setError(error.message);
@@ -150,6 +149,7 @@ import { translateText, analyzeText } from '../utils/api';
           </div>
         )}
       </div>
+      <p className="text-slate-400 text-sm w-full text-center">Login to access more features</p>
     </div>
   );
 }
