@@ -32,7 +32,8 @@ export const analyzeText = async (text) => {
         }
       }
     );
-    return response.data.data.feedback;
+    console.log("finally na", response.data)
+    return response.data;
   } catch (error) {
     throw new Error(`Error detecting text: ${error.response?.data || error.message}`);
   }
