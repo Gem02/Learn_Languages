@@ -90,7 +90,7 @@ const PracticePage = () => {
   };
 
   return (
-    <div className="flex min-h-screen mt-20 bg-gradient-to-br from-blue-50 to-red-100">
+    <div className="flex min-h-screen mt-16 bg-slate-50 dark:bg-slate-900">
       {/* Sidebar Tabs */}
       <div className="w-1/4 bg-blue-600 text-white">
         <div className="p-6 text-center border-b border-blue-600">
@@ -118,9 +118,9 @@ const PracticePage = () => {
       <main className="flex-1 p-6">
         {/* Header */}
         <header className="flex justify-between items-center mb-6">
-          <div className="text-lg font-semibold text-blue-800">
+          <div className="text-lg font-semibold text-blue-800 dark:text-slate-200">
             Current Language: <span className="font-bold">English</span>
-            <select className="ml-4 px-2 py-1 border rounded-md text-blue-600">
+            <select className="ml-4 px-2 py-1 border rounded-md text-blue-600 dark:text-slate-200 dark:bg-slate-900">
               <option value="english">English</option>
               <option value="french">French</option>
               <option value="spanish">Spanish</option>
@@ -135,7 +135,7 @@ const PracticePage = () => {
         </header>
 
         {/* Progress Bar */}
-        <div className="relative w-full h-4 bg-gray-300 rounded-lg mb-6">
+        <div className="relative w-full h-4 bg-gray-300 dark:bg-gray-700 rounded-lg mb-6">
           <div
             className="absolute top-0 left-0 h-4 rounded-lg bg-blue-500"
             style={{ width: `${progress}%` }}
@@ -143,17 +143,17 @@ const PracticePage = () => {
         </div>
 
         {/* Main Quiz Content */}
-        <div className="bg-white shadow-lg rounded-lg p-6 relative">
+        <div className="bg-white dark:bg-slate-950 shadow-lg rounded-lg p-6 relative">
           {activeTab === "quizzes" && (
             <div>
               {!quizStarted ? (
                 <div className="text-center">
-                  <h3 className="text-xl font-bold mb-4 text-blue-800">
+                  <h3 className="text-xl font-bold mb-4 text-blue-800 dark:text-slate-300">
                     Ready to start the quiz?
                   </h3>
                   <button
                     onClick={() => setQuizStarted(true)}
-                    className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                    className="mt-6 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                   >
                     Start Quiz
                   </button>

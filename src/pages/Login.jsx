@@ -1,10 +1,59 @@
+import {useState} from 'react'
 import {Reading} from '../assets/images/exports';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom';
+import {signInWithEmailAndPassword, signInWithPopup} from 'firebase/auth';
+import {auth, googleProvider, db} from '../config/firebase';
+import {useUserContext} from '../context/useUser'
+import { doc, setDoc } from 'firebase/firestore';
+import {fetchUserData} from '../utils/userFunctions';
+
 
 const Login = () =>{
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const { login } = useUserContext();
+
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+    
+          const freshUserData = await fetchUserData(user.uid);
+          freshUserData.lastLogin = new Date().toISOString();
+          await setDoc(doc(db, `users/${user.uid}`), freshUserData);
+    
+          login(freshUserData);
+          navigate('/dashboard');
+        } catch (err) {
+          if (err) setError('Invalid email or password');
+        }
+      };
+
+      const googleSignIn = async () => {
+        try {
+          const userCredential = await signInWithPopup(auth, googleProvider);
+          const user = userCredential.user;
+    
+          const freshUserData = await fetchUserData(user.uid);
+          freshUserData.lastLogin = new Date().toISOString();
+          await setDoc(doc(db, `users/${user.uid}`), freshUserData);
+    
+          login(freshUserData);
+          navigate('/dashboard');
+        } catch (err) {
+          if (err) setError('Sorry an error occured');
+        }
+      };
+
+
     return(
         
-        <div className="h-[calc(100vh-4rem)] lg:h-auto mt-16 overflow-hidden bg-white dark:bg-slate-950 lg:bg-gray-100 dark:lg:bg-slate-900 text-gray-900 dark:text-gray-300 flex justify-center items-center">
+        <div className="h-[calc(100vh-4rem)] lg:h-auto mt-16 overflow-hidden bg-white dark:bg-slate-950 lg:bg-gray-100 dark:lg:bg-slate-900 text-gray-900 dark:text-gray-300 pt-0 sm:pt-3 flex justify-center items-center">
             <div className=" lg:w-full max-w-screen-lg bg-slate-50 sm:rounded flex">
                 {/* Form Section */}
                 <div className="w-fit bg-white dark:bg-slate-950 lg:w-1/2 shadow-lg p-6 sm:p-12 flex flex-col">
@@ -12,7 +61,7 @@ const Login = () =>{
                         <h1 className="text-2xl xl:text-3xl font-bold">Login</h1>
                         <div className="w-full flex-1 mt-6">
                         {/* Social Signup Buttons */}
-                        <div className="flex flex-col items-center">
+                        <div onClick={googleSignIn} className="flex flex-col items-center">
                             <button className="w-full max-w-xs font-bold shadow-sm py-3 bg-blue-100 dark:bg-blue-900 rounded text-gray-800 dark:text-gray-300 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
                                 <div className="bg-white dark:bg-slate-950 p-2 rounded-full">
                                     <svg className="w-4" viewBox="0 0 533.5 544.3">
@@ -38,6 +87,8 @@ const Login = () =>{
                             </button>
                         </div>
 
+                        
+
                         {/* Divider */}
                         <div className="my-8 border-b border-slate-600 text-center">
                             <div className="px-2 inline-block text-sm text-gray-600 dark:text-gray-400 tracking-wide font-medium bg-white dark:bg-slate-950 transform translate-y-1/2">
@@ -46,13 +97,13 @@ const Login = () =>{
                         </div>
 
                         {/* Form */}
-                        <div className="mx-auto max-w-xs">
-                            <input className="w-full px-8 py-4 rounded font-medium bg-gray-100 border dark:border-slate-700 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white dark:bg-slate-950" type="email" placeholder="Email" />
-                            <input className="w-full px-8 py-4 rounded font-medium bg-gray-100 border dark:border-slate-700 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 dark:bg-slate-950" type="password" placeholder="Password" />
-                            <button className="mt-5 tracking-wide font-semibold bg-blue-500 text-gray-100 w-full py-4 rounded hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                        <form onSubmit={handleLogin} className="mx-auto max-w-xs">
+                            <input className="w-full px-8 py-4 rounded font-medium bg-gray-100 border dark:border-slate-700 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white dark:bg-slate-950" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                            <input className="w-full px-8 py-4 rounded font-medium bg-gray-100 border dark:border-slate-700 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 dark:bg-slate-950" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                            <button type='submit' className="mt-5 tracking-wide font-semibold bg-blue-500 text-gray-100 w-full py-4 rounded hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                 <span className="ml-3">Login</span>
                             </button>
-                        </div>
+                        </form>
                         </div>
                         {/* <Link>Don&apos;t have an account yet?</Link> */}
                         <Link to={"/signup"} className='mt-4 font-normal text-sm text-slate-500'>Don&apos;t have an account yet? <strong className='text-blue-600'>Sign up Here</strong></Link>

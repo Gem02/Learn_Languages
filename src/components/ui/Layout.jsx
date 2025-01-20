@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
       {/* Main Content */}
       <div className="w-full lg:ml-[25%] lg:w-3/4 flex flex-col justify-between h-full">
         {/* Scrollable Content */}
-        <main className="overflow-y-auto flex-grow bg-gray-100 dark:bg-slate-900 px-2">
+        <main className="overflow-y-auto mt-5 sm:mt-0 flex-grow bg-gray-100 dark:bg-slate-900 px-2">
           {children}
         </main>
 

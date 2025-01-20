@@ -36,7 +36,7 @@ const Home = () => {
 
         <div className="mt-12 flex flex-col justify-center gap-y-5 sm:mt-10 sm:flex-row sm:gap-y-0 sm:gap-x-6 w-full">
           <Link
-            to={"signup"}
+            to={"/login"}
             className="group flex items-center justify-center rounded-full py-3 px-12 text-sm font-semibold bg-slate-900 dark:bg-blue-700 text-white hover:bg-slate-700 hover:text-slate-100 focus-visible:outline-slate-900"
           >
             <span className="ml-3">Get Started</span>

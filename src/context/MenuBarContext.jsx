@@ -9,8 +9,12 @@ export const MenuContextProvider = ({ children }) =>{
         setShowSideBar((val) => !val);
     }
 
+    const closeMenu = () =>{
+        setShowSideBar(false);
+    }
+
     return (
-        <MenuContext.Provider value={{showSideBar, handleSideBar, setShowSideBar}}>
+        <MenuContext.Provider value={{showSideBar, handleSideBar, setShowSideBar, closeMenu}}>
             {children}
         </MenuContext.Provider>
     )

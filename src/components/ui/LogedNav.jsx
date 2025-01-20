@@ -3,23 +3,25 @@ import {Link} from 'react-router-dom'
 import {Menu } from 'lucide-react';
 import SideMenu from "./SideMenu";
 import DarkModeToggle from '../ui/DarkmodeBtn'
-import { LanguageIcon } from '../../assets/images/exports'
+import { LanguageIcon } from '../../assets/images/exports';
+import { useUserContext } from "../../context/useUser";
 
 const LogedNav = () => {
-    const {showSideBar, handleSideBar} = useMenuBar()
-    console.log("from somewhere", showSideBar)
+    const {showSideBar, handleSideBar, closeMenu} = useMenuBar();
+    const { user } = useUserContext();
+    console.log(user)
   return (
     <nav className="shadow-sm border-b-default border-solid border-gray-200 dark:border-gray-600 z-10 w-full fixed bg-white dark:bg-slate-900">
-      <div aria-label="top bar" className=" px-4 sm:px-8 flex-none flex justify-between bg-white dark:bg-slate-950 h-16">
+      <div aria-label="top bar" className=" px-2 sm:px-8 flex-none flex justify-between bg-white dark:bg-slate-950 h-16">
 
         {/* <!-- top bar left --> */}
         <div className="flex items-center justify-center">
-            <Link to={'/'} onClick={handleSideBar} className="font-bold text-2xl mb-1 dark:text-slate-100 flex gap-1 scale-75 sm:scale-100">
+            <Link to={'/'} onClick={closeMenu} className="font-bold text-xl sm:text-2xl mb-1 dark:text-slate-100 flex gap-1 sm:scale-100">
                 <img src={LanguageIcon} alt="icon" className='h-8' />
                 <p>My<span className='text-blue-500'> Tutor</span></p>
             </Link>
             <Menu onClick={handleSideBar}  className=" ml-2 w-6 h-6 text-gray-700 dark:text-slate-400 hover:text-black lg:hidden cursor-pointer" />
-            <ul aria-label="top bar left" aria-orientation="horizontal" className="hidden sm:flex dark:text-slate-300 ">
+            <ul aria-label="top bar left" aria-orientation="horizontal" className="hidden dark:text-slate-300 ">
                     {/* <!-- add button --> */}
                 <li className="group relative">
                     <button aria-controls="add" aria-expanded="false" aria-haspopup="listbox" className="flex items-center h-full px-4 text-sm">
@@ -94,7 +96,7 @@ const LogedNav = () => {
 
             <li className="h-10 w-10 ml-3">
                 <button title="Page Menu" aria-label="page menu" className="h-full w-full rounded-full border focus:outline-none focus:shadow-outline">
-                    <img className="h-full w-full rounded-full mx-auto" src="https://raw.githubusercontent.com/bluebrown/tailwind-zendesk-clone/master/public/assets/me.jpg" />
+                    <img className="h-full w-full rounded-full mx-auto" src={user?.photoUrl || "https://api.dicebear.com/6.x/adventurer/svg"}/>
                 </button>
             </li>
         </ul>

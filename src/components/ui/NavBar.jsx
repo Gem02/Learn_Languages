@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {Menu } from 'lucide-react';
 import { Link } from "react-router-dom";
+import DarkModeToggle from '../ui/DarkmodeBtn'
 
    const Sample = () =>{
 
@@ -31,7 +32,7 @@ import { Link } from "react-router-dom";
     }
 
         return (
-            <nav className="bg-white pt-1 lg:py-0 border-b-default border-solid border-gray-200 z-10 w-full fixed" id="topnav" >
+            <nav className="bg-white dark:bg-slate-950 pt-1 lg:py-0 border-b-default border-solid border-gray-200 z-10 w-full fixed" id="topnav" >
               <div className="lg:px-8">
                 <div className="w-full flex flex-col lg:flex-row ">
 
@@ -45,25 +46,25 @@ import { Link } from "react-router-dom";
                   <ul className={`flex lg:items-center max-lg:gap-4 max-lg:mb-4 flex-col px-4  lg:flex-1 lg:flex-row lg:flex ${menuOpened ? "block" : "hidden"}`} >
                       
                       <li>
-                        <Link to={"/"} className="text-gray-500 text-sm font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 block lg:mr-6 lg:text-base md:mb-0 md:mr-3 hover:text-gray-900">
+                        <Link to={"/"} className="text-gray-500 dark:text-slate-300 text-sm font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 block lg:mr-6 lg:text-base md:mb-0 md:mr-3 hover:text-gray-900">
                           Home
                         </Link>
                       </li>
 
                       <li>
-                        <Link to={"/learn"} className="text-gray-500 text-sm font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 block lg:mr-6 lg:text-base md:mb-0 md:mr-3 hover:text-gray-900" >
+                        <Link to={"/learn"} className="text-gray-500 dark:text-slate-300 text-sm font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 block lg:mr-6 lg:text-base md:mb-0 md:mr-3 hover:text-gray-900" >
                           Learn
                         </Link>
                       </li>
 
                       <li>
-                        <Link to={"/practice"} className="text-gray-500 text-sm font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 block lg:mr-6 lg:text-base md:mb-0 md:mr-3 hover:text-gray-900" >
+                        <Link to={"/practice"} className="text-gray-500 dark:text-slate-300 text-sm font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 block lg:mr-6 lg:text-base md:mb-0 md:mr-3 hover:text-gray-900" >
                           Practice
                         </Link>
                       </li>
         
                       <li className="relative">
-                        <button onMouseEnter={ () => toggleDropdown('megamenu')} className="dropdown-toggle flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-prime-blue-700 transition-all duration-500 lg:mr-6 lg:mb-0 mr-auto lg:text-left  lg:m-0 hover:text-gray-900" >
+                        <button onMouseEnter={ () => toggleDropdown('megamenu')} className="dropdown-toggle flex items-center justify-between text-gray-500 dark:text-slate-300 text-sm lg:text-base font-medium hover:text-prime-blue-700 transition-all duration-500 lg:mr-6 lg:mb-0 mr-auto lg:text-left  lg:m-0 hover:text-gray-900" >
                           Services
                           <svg
                               className={`w-3 h-2 ml-1.5 transition-transform`}
@@ -87,10 +88,10 @@ import { Link } from "react-router-dom";
                         {/* dropdown */}
 
 
-                        <div onMouseLeave={closeDropdown} id="megamenu" aria-labelledby="megamenu" className={`animate-fade z-10 relative lg:absolute top-2 lg:top-14  lg:-left-20 bg-white rounded-lg shadow-[0px_15px_30px_0px_rgba(16,24,40,0.1)] xl:p-8 lg:p-4 p-2 lg:min-w-[800px] md:min-w-[500px] min-w-full ${isMegamenuOpen ? "block" : "hidden"}`} >
+                        <div onMouseLeave={closeDropdown} id="megamenu" aria-labelledby="megamenu" className={`animate-fade z-10 relative lg:absolute top-2 lg:top-14  lg:-left-20 bg-white dark:bg-slate-950 rounded-lg shadow-[0px_15px_30px_0px_rgba(16,24,40,0.1)] xl:p-8 lg:p-4 p-2 lg:min-w-[800px] md:min-w-[500px] min-w-full ${isMegamenuOpen ? "block" : "hidden"}`} >
                           <div className="flex flex-col sm:flex-row lg:justify-between">
                             <ul className="text-sm text-gray-700 lg:w-1/2">
-                              <h6 className="font-medium text-sm text-gray-500 mb-2">
+                              <h6 className="font-medium text-sm text-gray-500 dark:text-slate-300 mb-2">
                                 Features
                               </h6>
                               <li className="">
@@ -216,7 +217,7 @@ import { Link } from "react-router-dom";
                               className="text-sm text-gray-700 dark:text-gray-400 lg:w-1/2"
                               aria-labelledby="dropdownLargeButton"
                             >
-                              <h6 className="font-medium text-sm text-gray-500 mb-2">
+                              <h6 className="font-medium text-sm text-gray-500 dark:text-slate-300 mb-2">
                                 Services
                               </h6>
                               <li className="">
@@ -340,7 +341,7 @@ import { Link } from "react-router-dom";
 
                       <li className="relative">
                         <div className="dropdown relative inline-flex">
-                          <button onMouseEnter={() => toggleDropdown('features')} type="button" data-target="dropdown-feature" className="dropdown-toggle flex items-center justify-between text-gray-500 text-sm max-lg:h-max text-center lg:text-base font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 lg:mr-6 lg:mb-0 mr-auto lg:text-left lg:m-0 hover:text-gray-900" >
+                          <button onMouseEnter={() => toggleDropdown('features')} type="button" data-target="dropdown-feature" className="dropdown-toggle flex items-center justify-between text-gray-500 dark:text-slate-300 text-sm max-lg:h-max text-center lg:text-base font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 lg:mr-6 lg:mb-0 mr-auto lg:text-left lg:m-0 hover:text-gray-900" >
                             Personalize
                             <svg
                               className="w-3 h-2 ml-1.5  dropdown-active-rotate-180"
@@ -361,7 +362,7 @@ import { Link } from "react-router-dom";
                           </button>
 
                           {/* dropdown */}
-                          <div onMouseLeave={() => closeDropdown()} id="dropdown-feature" className={`dropdown-menu rounded-xl shadow-lg lg:bg-white relative lg:absolute max-lg:-left-14 max-lg:top-2 max-lg:bg-white lg:top-full lg:w-72 mt-2 hidden" aria-labelledby="dropdown-feature ${isFeatureOpen ? "block" : "hidden"} `} >
+                          <div onMouseLeave={() => closeDropdown()} id="dropdown-feature" className={`dropdown-menu rounded-xl shadow-lg lg:bg-white dark:bg-slate-950 relative lg:absolute max-lg:-left-14 max-lg:top-2 max-lg:bg-white dark:bg-slate-950 lg:top-full lg:w-72 mt-2 hidden" aria-labelledby="dropdown-feature ${isFeatureOpen ? "block" : "hidden"} `} >
                             <ul className="py-2">
                               <li>
                                 <Link
@@ -393,11 +394,14 @@ import { Link } from "react-router-dom";
                       </li>
                   </ul>
 
-                  <div className={` w-full lg:flex justify-between max-lg:bg-white py-5 lg:py-2 max-lg:mt-1 max-lg:px-4 max-lg:shadow-lg max-lg:shadow-gray-200 max-lg:h-auto max-lg:overflow-auto transition-all duration-500 delay-200 ${menuOpened ? "block" : "hidden"}`} id="navbar">
+                  <div className={` w-full lg:flex justify-between max-lg:bg-white dark:bg-slate-950 py-5 lg:py-2 max-lg:mt-1 max-lg:px-4 max-lg:shadow-lg max-lg:shadow-gray-200 max-lg:h-auto max-lg:overflow-auto transition-all duration-500 delay-200 ${menuOpened ? "block" : "hidden"}`} id="navbar">
                     
                     
                     <div className="flex lg:items-center justify-start flex-col lg:flex-row max-lg:gap-4 lg:flex-1 lg:justify-end" >
-                      <Link to={"/login"} className=" text-blue-500 rounded-full ring-1 hover:shadow-lg cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 py-3 px-6 text-sm" >
+                      
+                      <div className='mr-5'><DarkModeToggle /></div>
+                      
+                      <Link to={"/login"} className=" text-blue-500 dark:text-slate-200 rounded-full ring-1 dark:ring-slate-300 hover:shadow-lg cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 py-3 px-6 text-sm" >
                         Login
                       </Link>
 

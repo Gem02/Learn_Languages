@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {Spinner} from '../components/ui/TextSpinner'
 import { translateText, analyzeText } from '../utils/api';

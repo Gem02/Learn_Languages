@@ -1,4 +1,3 @@
-import { FaMoon, FaSun } from "react-icons/fa";
 import { Sun, Moon } from 'lucide-react';
 import useDarkMode from "../../utils/darkmode";
 

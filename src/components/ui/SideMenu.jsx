@@ -1,33 +1,25 @@
-import { useState } from "react";
-import { useMenuBar } from '../../context/useSideMenu'
+import { useMenuBar } from "../../context/useSideMenu";
 import { NavLink } from "react-router-dom";
 import {
-    FaChartBar,
-    FaBook,
-    FaCog,
-    FaSignOutAlt,
-    FaUser,
-    FaQuestionCircle,
-    FaCaretDown,
-    FaCaretRight,
-    FaBrain,
-    FaVolumeUp,
-    FaBookOpen,
-    FaLanguage,
-} from "react-icons/fa";
+    BarChart2,
+    BookOpen,
+    HelpCircle,
+    Settings,
+    LogOut,
+    User,
+} from "lucide-react";
+import signoutFunc from "../../utils/logout";
+import {useUserContext} from '../../context/useUser';
 
 const SideMenu = () => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const {setShowSideBar} = useMenuBar();
-
-    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+    const { setShowSideBar } = useMenuBar();
+    const {user} = useUserContext()
 
     return (
-        
         <aside className="w-full bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-300 h-screen">
             <div className="p-6 text-center border-b border-gray-200">
-                <h1 className="text-2xl font-bold dark:text-slate-300">Godwin Mangai</h1>
-                <p>godwin@gmail.com</p>
+                <h1 className="text-2xl font-bold dark:text-slate-300">{user?.name}</h1>
+                <p>{user?.email}</p>
             </div>
             <nav className="mt-6 space-y-1">
                 <NavLink
@@ -39,10 +31,10 @@ const SideMenu = () => {
                         }`
                     }
                 >
-                    <FaChartBar className="mr-3" />
+                    <BarChart2 className="mr-3" />
                     Dashboard Overview
                 </NavLink>
-                
+
                 <NavLink
                     onClick={() => setShowSideBar(false)}
                     to="/lesson"
@@ -52,81 +44,22 @@ const SideMenu = () => {
                         }`
                     }
                 >
-                    <FaBook className="mr-3" />
+                    <BookOpen className="mr-3" />
                     Lessons
                 </NavLink>
 
-                <div>
-                    <button
-                        onClick={toggleDropdown}
-                        className={`flex items-center w-full px-6 py-3 text-left transition-colors ${
-                            isDropdownOpen ? "bg-gray-200 dark:bg-slate-900 text-slate-900 dark:text-slate-300" : "hover:bg-gray-200 dark:hover:bg-slate-900"
-                        }`}
-                    >
-                        <FaBrain className="mr-3" />
-                        Learning Tools
-                        {isDropdownOpen ? (
-                            <FaCaretDown className="ml-auto" />
-                        ) : (
-                            <FaCaretRight className="ml-auto" />
-                        )}
-                    </button>
-                    {isDropdownOpen && (
-                        <div className="ml-6 mt-2 space-y-2">
-                            <NavLink
-                                onClick={() => setShowSideBar(false)}
-                                to="/quizPage"
-                                className={({ isActive }) =>
-                                    `flex items-center px-6 py-3 transition-colors ${
-                                        isActive ? "bg-gray-200 dark:bg-slate-900 text-slate-900 dark:text-slate-300" : "hover:bg-gray-200 dark:hover:bg-slate-900"
-                                    }`
-                                }
-                            >
-                                <FaQuestionCircle className="mr-3" />
-                                Quiz
-                            </NavLink>
-
-                            <NavLink
-                                onClick={() => setShowSideBar(false)}
-                                to="/speakingPage"
-                                className={({ isActive }) =>
-                                    `flex items-center px-6 py-3 transition-colors ${
-                                        isActive ? "bg-gray-200 dark:bg-slate-900 text-slate-900 dark:text-slate-300" : "hover:bg-gray-200 dark:hover:bg-slate-900"
-                                    }`
-                                }
-                            >
-                                <FaVolumeUp className="mr-3" />
-                                Speaking
-                            </NavLink>
-
-                            <NavLink
-                                onClick={() => setShowSideBar(false)}
-                                to="/vocabularyPage"
-                                className={({ isActive }) =>
-                                    `flex items-center px-6 py-3 transition-colors ${
-                                        isActive ? "bg-gray-200 dark:bg-slate-900 text-slate-900 dark:text-slate-300" : "hover:bg-gray-200 dark:hover:bg-slate-900"
-                                    }`
-                                }
-                            >
-                                <FaBookOpen className="mr-3" />
-                                Vocabulary
-                            </NavLink>
-
-                            <NavLink
-                                onClick={() => setShowSideBar(false)}
-                                to="/grammerPage"
-                                className={({ isActive }) =>
-                                    `flex items-center px-6 py-3 transition-colors ${
-                                        isActive ? "bg-gray-200 dark:bg-slate-900 text-slate-900 dark:text-slate-300" : "hover:bg-gray-200 dark:hover:bg-slate-900"
-                                    }`
-                                }
-                            >
-                                <FaLanguage className="mr-3" />
-                                Grammar
-                            </NavLink>
-                        </div>
-                    )}
-                </div>
+                <NavLink
+                    onClick={() => setShowSideBar(false)}
+                    to="/exercisePage"
+                    className={({ isActive }) =>
+                        `flex items-center px-6 py-3 transition-colors ${
+                            isActive ? "bg-gray-200 dark:bg-slate-900 text-slate-900 dark:text-slate-300" : "hover:bg-gray-200 dark:hover:bg-slate-900"
+                        }`
+                    }
+                >
+                    <HelpCircle className="mr-3" />
+                    Questions
+                </NavLink>
 
                 <NavLink
                     onClick={() => setShowSideBar(false)}
@@ -137,7 +70,7 @@ const SideMenu = () => {
                         }`
                     }
                 >
-                    <FaUser className="mr-3" />
+                    <User className="mr-3" />
                     My Profile
                 </NavLink>
 
@@ -150,7 +83,7 @@ const SideMenu = () => {
                         }`
                     }
                 >
-                    <FaQuestionCircle className="mr-3" />
+                    <HelpCircle className="mr-3" />
                     Help
                 </NavLink>
 
@@ -163,20 +96,20 @@ const SideMenu = () => {
                         }`
                     }
                 >
-                    <FaCog className="mr-3" />
+                    <Settings className="mr-3" />
                     Settings
                 </NavLink>
-                
+
                 <NavLink
-                    onClick={() => setShowSideBar(false)}
-                    to="/logout"
+                    onClick={signoutFunc}
+                    to="/"
                     className={({ isActive }) =>
                         `flex items-center px-6 py-3 transition-colors ${
                             isActive ? "bg-gray-200 dark:bg-slate-900 text-slate-900 dark:text-slate-300" : "hover:bg-gray-200 dark:hover:bg-slate-900"
                         }`
                     }
                 >
-                    <FaSignOutAlt className="mr-3" />
+                    <LogOut className="mr-3" />
                     Logout
                 </NavLink>
             </nav>

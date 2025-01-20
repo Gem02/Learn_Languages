@@ -43,7 +43,7 @@ const Learn = () => {
   };
 
   return (
-    <div className="mt-11 lg:mt-14 min-h-screen bg-gray-100 text-gray-800">
+    <div className="mt-11 lg:mt-14 min-h-screen bg-gray-100 dark:bg-slate-900 text-gray-800">
       {/* Header Section */}
       <header className="text-center py-10 bg-gradient-to-b from-blue-600 to-blue-400 text-white">
         <h1 className="text-2xl md:text-4xl font-bold">Start Your Language Learning Journey</h1>
@@ -52,7 +52,7 @@ const Learn = () => {
         </p>
         <div className="mt-6 flex items-center flex-wrap justify-center gap-2">
           <Link to={"/signup"}
-            className="px-6 text-sm py-2 bg-white text-blue-600 font-medium rounded hover:bg-gray-100 w-full sm:w-auto sm:mx-[0] mx-[5%] "
+            className="px-6 text-sm dark:text-slate-200 py-2 bg-white dark:bg-slate-950 text-blue-600 font-medium rounded hover:bg-gray-100 w-full sm:w-auto sm:mx-[0] mx-[5%] "
           >Sign Up to Unlock All Features </Link>
           <button className="px-6 text-sm py-2 bg-blue-600 font-medium rounded hover:bg-blue-700 w-full sm:w-auto sm:mx-[0] mx-[5%]">
             Browse Languages
@@ -62,15 +62,15 @@ const Learn = () => {
 
       {/* Languages Section */}
       <section className="py-10">
-        <h2 className="text-center text-2xl font-semibold">Explore Languages</h2>
+        <h2 className="text-center text-2xl font-semibold  dark:text-slate-100">Explore Languages</h2>
         <div className="mt-6 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-6">
           {languages.map((language) => (
             <div
               key={language.id}
-              className="bg-white p-4 shadow-md rounded-lg hover:shadow-lg transition"
+              className="bg-white dark:bg-slate-950  p-4 shadow-md rounded-lg hover:shadow-lg transition"
             >
-              <h3 className="text-xl font-semibold">{language.name}</h3>
-              <p className="text-gray-600 mt-2">{language.description}</p>
+              <h3 className="text-xl font-semibold dark:text-slate-100">{language.name}</h3>
+              <p className="text-gray-600 dark:text-slate-400 mt-2">{language.description}</p>
               <button
                 className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                 onClick={() => openModal(language)}
@@ -84,17 +84,17 @@ const Learn = () => {
 
       {/* Modal */}
       {selectedLanguage && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white w-full max-w-lg mx-4 rounded-lg shadow-lg">
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-slate-800 w-full max-w-lg mx-4 rounded-lg shadow-lg">
             <div className="p-6">
-              <h2 className="text-2xl font-bold text-blue-600">
+              <h2 className="text-2xl font-bold text-blue-600 dark:text-slate-200">
                 {selectedLanguage.name} - Preview Lessons
               </h2>
               <ul className="mt-4 space-y-2">
                 {sampleLessons[selectedLanguage.name]?.map((lesson) => (
                   <li
                     key={lesson.id}
-                    className="p-2 bg-gray-100 rounded hover:bg-gray-200 cursor-pointer"
+                    className="p-2 bg-gray-100 dark:bg-slate-900 dark:text-slate-300 rounded hover:bg-gray-200 cursor-pointer"
                     onClick={() => goToLessonDetail(lesson.id)}
                   >
                     {lesson.title}
