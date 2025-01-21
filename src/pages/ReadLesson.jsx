@@ -3,30 +3,39 @@ import Layout from "../components/ui/Layout";
 import { FileText, Circle, Book, Check } from "lucide-react";
 import { useUserContext } from "../context/useUser";
 import { db } from "../config/firebase";
-import { getDoc, doc, updateDoc } from "firebase/firestore";
+import { getDoc, doc, updateDoc, setDoc } from "firebase/firestore";
 import LoadingDots from "../components/ui/LoadingDots";
 import {useNavigate, useLocation} from 'react-router-dom';
 
 const ReadingLesson = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const stateData = location.state || '';
-  const { user, learningData, login} = useUserContext();
-  const [currentIndex, setCurrentIndex] = useState(learningData.lessons.indexOf(user?.lastLesson) || 0);
+  const stateData = location.state || {};
+  const { user, learningData } = useUserContext();
+
+  const [currentIndex, setCurrentIndex] = useState(
+    user?.lastLesson ? learningData.lessons.indexOf(user.lastLesson) : 0
+  );
   const [lesson, setLesson] = useState(null);
   const [lessonMain, setLessonMain] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
   const selectedLanguage = localStorage.getItem("selectedLanguage") || "english";
 
 
  // Fetch lesson data
  const fetchLessonData = async (lessonId) => {
   try {
+    if (typeof lessonId !== "string") {
+      console.error("Invalid lessonId:", lessonId); // Debugging line
+      throw new Error("Lesson ID must be a valid string.");
+    }
+
     setLoading(true);
     setError(null);
 
-    const lessonRef = doc(db, "lessons", lessonId);
+    const lessonRef = doc(db, "lessons", lessonId); // Ensure lessonId is a string
     const lessonDoc = await getDoc(lessonRef);
 
     if (!lessonDoc.exists()) {
@@ -35,7 +44,7 @@ const ReadingLesson = () => {
 
     setLessonMain(lessonDoc.data());
   } catch (err) {
-    console.error("Error fetching lesson:", err);
+    console.error("Error fetching lesson:", err.message || err);
     setError("Unable to fetch the lesson. Please try again.");
   } finally {
     setLoading(false);
@@ -43,39 +52,72 @@ const ReadingLesson = () => {
 };
 
 
-  // Initial lesson fetch
+
+  const updateUserLesson = async (lessonId) => {
+    if (!user?.uid) {
+      console.error("User ID is missing.");
+      return;
+    }
+  
+    try {
+      const userRef = doc(db, "users", user.uid); // Reference to the user's document
+      const userDoc = await getDoc(userRef);
+  
+      if (userDoc.exists()) {
+        // If user document exists, merge new data into it
+        await setDoc(
+          userRef,
+          {
+            languageProficiency: {
+              [selectedLanguage]: {
+                lastLesson: lessonId, // Update the last lesson for the selected language
+              },
+            },
+            lastLesson: lessonId, // Update the overall last lesson
+          },
+          { merge: true } // Merge with existing data
+        );
+      } else {
+        // If the user document doesn't exist, create it
+        await setDoc(userRef, {
+          languageProficiency: {
+            [selectedLanguage]: {
+              lastLesson: lessonId,
+            },
+          },
+          lastLesson: lessonId,
+        });
+      }
+  
+      console.log(`Lesson progress updated: ${lessonId}`);
+    } catch (err) {
+      console.error("Error updating lesson progress:", err);
+    }
+  };
+  
+  
   useEffect(() => {
-    if (learningData?.lessons && learningData.lessons.length > 0 ) {
-      if(stateData.nextLesson){
+    if (learningData?.lessons && learningData.lessons.length > 0) {
+      if (stateData.nextLesson) {
         fetchLessonData(learningData.lessons[stateData.nextLesson]);
-        updateUserLesson(learningData.lessons[stateData.nextLesson]);
         return;
       }
       const initialLesson = user?.lastLesson || learningData.lessons[0];
       fetchLessonData(initialLesson);
     }
-  }, [learningData]);
+  }, [learningData, stateData.nextLesson, user]);
 
-
-  const updateUserLesson = async (value) => {
-    try {
-      const userRef = doc(db, "users", user.uid);
-  
-      // Update the document
-      await updateDoc(userRef, {
-        [`languageProficiency.${selectedLanguage}`]: value,
-        lastLesson: value,
-      });
-  
-      // Fetch the updated document
-      login(user);
-      
-    } catch (err) {
-      console.error("Error updating progress:", err);
-      setError("Failed to update progress.");
-      return null;
+  // Update lesson content when `lessonMain` changes
+  useEffect(() => {
+    if (lessonMain) {
+      const languageContent = lessonMain.languages.find(
+        (lang) => lang.id === selectedLanguage
+      );
+      setLesson(languageContent || null);
     }
-  };
+  }, [lessonMain, selectedLanguage]);
+
+  
   
 
   useEffect(() => {
@@ -95,7 +137,7 @@ const ReadingLesson = () => {
     if (!learningData?.lessons) return;
   
     const currentLessonId = learningData.lessons[currentIndex];
-    
+  
     // Retrieve current user progress for the language
     const userRef = doc(db, "quizProgress", user.uid);
     const userDoc = await getDoc(userRef);
@@ -110,6 +152,8 @@ const ReadingLesson = () => {
   
     if (!topicProgress?.completed) {
       // Redirect to quiz page for the current lesson if not completed
+      console.log("Redirecting to quiz page...");
+      await updateUserLesson(currentLessonId); // Ensure the current lesson is saved
       navigate('/quizPage', { state: { currentLessonId, selectedLanguage } });
       return;
     }
@@ -120,45 +164,46 @@ const ReadingLesson = () => {
       const nextLesson = learningData.lessons[nextIndex];
   
       setCurrentIndex(nextIndex);
-      await updateUserLesson(nextLesson);
+  
+      console.log("Updating user lesson progress for next lesson...");
+      await updateUserLesson(nextLesson); // Update progress before fetching
+  
+      console.log("Fetching next lesson data...");
       await fetchLessonData(nextLesson);
   
-      // Optionally, navigate to the next lesson's reading page
+      console.log("Navigating to next lesson...");
       navigate('/readingPage', { state: { nextLessonId: nextLesson } });
     } else {
       alert("This is the last lesson.");
     }
   };
   
+  
+  
 
   const handlePrevious = async () => {
-    if (!learningData?.lessons) return;
-    
-    if (currentIndex > 0) {
-      const prevIndex = currentIndex - 1;
-      const prevLesson = learningData.lessons[prevIndex];
-      
-      setCurrentIndex(prevIndex);
-      await updateUserLesson(prevLesson);
-      await fetchLessonData(prevLesson);
-    } else {
-      alert(currentIndex)
-      alert("This is the first lesson");
+    if (!learningData?.lessons || currentIndex === 0) {
+      alert("This is the first lesson.");
+      return;
     }
+
+    const prevIndex = currentIndex - 1;
+    const prevLesson = learningData.lessons[prevIndex];
+    setCurrentIndex(prevIndex);
+    await updateUserLesson(prevLesson);
+    await fetchLessonData(prevLesson);
   };
 
-  const handleQuiz = async() =>{
+  const handleQuiz = async () => {
     const currentLessonId = learningData.lessons[currentIndex];
-    // Check if quiz for current lesson is completed
     const quizRef = doc(db, "quizProgress", `${user.uid}_${currentLessonId}`);
     const quizSnapshot = await getDoc(quizRef);
 
     if (!quizSnapshot.exists() || !quizSnapshot.data()?.completed) {
-      // Redirect to quiz page for the current lesson
-      navigate('/quizPage', { state: { currentLessonId, selectedLanguage } });
-      return;
+      navigate("/quizPage", { state: { currentLessonId, selectedLanguage } });
     }
-  }
+  };
+
 
   if (loading) {
     return <LoadingDots />;

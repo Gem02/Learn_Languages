@@ -90,14 +90,14 @@ const PracticePage = () => {
   };
 
   return (
-    <div className="flex min-h-screen mt-16 bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen mt-16 bg-slate-50 dark:bg-slate-900">
       {/* Sidebar Tabs */}
-      <div className="w-1/4 bg-blue-600 text-white">
-        <div className="p-6 text-center border-b border-blue-600">
+      <div className="w-full bg-blue-600 text-white">
+        <div className="pt-6 px-4 text-center border-b border-blue-600">
           <h1 className="text-2xl font-bold">Practice</h1>
           <p className="mt-2 text-sm">Sharpen your language skills</p>
         </div>
-        <ul className="mt-6 space-y-2">
+        <ul className="flex flex-wrap gap-3 justify-center pb-5">
           {tabs.map((tab) => (
             <li key={tab.id}>
               <button
@@ -115,16 +115,12 @@ const PracticePage = () => {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 p-6">
+      <main className="flex flex-col w-full items-center p-2 sm:p-6 mt-4">
         {/* Header */}
         <header className="flex justify-between items-center mb-6">
           <div className="text-lg font-semibold text-blue-800 dark:text-slate-200">
             Current Language: <span className="font-bold">English</span>
-            <select className="ml-4 px-2 py-1 border rounded-md text-blue-600 dark:text-slate-200 dark:bg-slate-900">
-              <option value="english">English</option>
-              <option value="french">French</option>
-              <option value="spanish">Spanish</option>
-            </select>
+            
           </div>
           <div className="flex items-center space-x-4">
             <IoMdTimer className="text-2xl text-blue-600" />
@@ -135,7 +131,7 @@ const PracticePage = () => {
         </header>
 
         {/* Progress Bar */}
-        <div className="relative w-full h-4 bg-gray-300 dark:bg-gray-700 rounded-lg mb-6">
+        <div className="relative md:w-9/12 w-full h-4 bg-gray-300 dark:bg-gray-700 rounded-lg mb-6">
           <div
             className="absolute top-0 left-0 h-4 rounded-lg bg-blue-500"
             style={{ width: `${progress}%` }}
@@ -143,7 +139,7 @@ const PracticePage = () => {
         </div>
 
         {/* Main Quiz Content */}
-        <div className="bg-white dark:bg-slate-950 shadow-lg rounded-lg p-6 relative">
+        <div className="bg-white md:w-9/12 w-full dark:bg-slate-950 shadow-lg rounded-lg p-6 relative">
           {activeTab === "quizzes" && (
             <div>
               {!quizStarted ? (
@@ -160,7 +156,7 @@ const PracticePage = () => {
                 </div>
               ) : (
                 <>
-                  <h3 className="text-xl font-bold mb-4 text-blue-800">
+                  <h3 className="text-xl font-bold mb-4 text-slate-700 dark:text-slate-300">
                     {questions[currentQuestion].question}
                   </h3>
                   <div className="space-y-4">

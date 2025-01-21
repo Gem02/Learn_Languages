@@ -24,7 +24,6 @@ const MainLessonPage = () => {
   const handleLanguageChange = async (e) => {
     const selected = e.target.value;
     setSelectedLanguage(selected);
-
     // Save locally for immediate feedback
     localStorage.setItem("selectedLanguage", selected);
 
@@ -76,10 +75,11 @@ const MainLessonPage = () => {
             <div className="mt-5">
               {/* Language Selector */}
               <p className=" text-slate-800 dark:text-slate-200 font-semibold">Select a language to read now from your list of languages.</p>
+              <p className="text-slate-800 dark:text-slate-200 text-[11px]">You can add up to four(4) languages from settings</p>
               <select
                 value={selectedLanguage}
                 onChange={handleLanguageChange}
-                className="px-4 py-2 border border-gray-300 dark:border-gray-800 rounded bg-white dark:bg-slate-950 dark:text-slate-300 shadow-sm"
+                className="mt-2 px-4 py-2 border border-gray-300 dark:border-gray-800 rounded bg-white dark:bg-slate-950 dark:text-slate-300 shadow-sm"
               >
                 {user?.learningLanguages?.map((lang) => (
                   <option key={lang} value={lang}>

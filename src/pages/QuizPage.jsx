@@ -25,6 +25,7 @@ const QuizPage = () => {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
+    console.log("the user data is", user)
     const fetchQuestions = async () => {
       if (!currentId || !language) {
         setError("Lesson ID or language not provided.");

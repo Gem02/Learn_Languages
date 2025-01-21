@@ -132,12 +132,12 @@ const SettingsPage = () => {
                     </button>
                     </li>
                     <li className='flex flex-wrap gap-2'>
-                    <span>Language(s) Learning: {user?.learningLanguages?.join(', ') || 'None'}</span>
+                    <span>Language(s) to learn: {user?.learningLanguages?.join(', ') || 'None'}</span>
                     <button
                         className="ring-1 px-5 ring-slate-500 text-slate-500 rounded hover:underline"
                         onClick={() => openModal('languages')}
                     >
-                         Manage
+                         Add
                     </button>
                     </li>
                 </ul>

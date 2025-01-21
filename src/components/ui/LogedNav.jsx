@@ -9,7 +9,6 @@ import { useUserContext } from "../../context/useUser";
 const LogedNav = () => {
     const {showSideBar, handleSideBar, closeMenu} = useMenuBar();
     const { user } = useUserContext();
-    console.log(user)
   return (
     <nav className="shadow-sm border-b-default border-solid border-gray-200 dark:border-gray-600 z-10 w-full fixed bg-white dark:bg-slate-900">
       <div aria-label="top bar" className=" px-2 sm:px-8 flex-none flex justify-between bg-white dark:bg-slate-950 h-16">

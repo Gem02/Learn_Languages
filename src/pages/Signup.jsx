@@ -89,7 +89,7 @@ const Signup = () =>{
 
 
     return(
-      <div className="h-[calc(100vh-4rem)] lg:h-auto mt-16 overflow-hidden bg-white dark:bg-slate-950  lg:bg-gray-100 dark:lg:bg-slate-900 pt-0 sm:pt-3 text-gray-800 dark:text-gray-300 flex justify-center items-center">
+      <div className="h-[calc(100vh-4rem)] lg:h-auto mt-32 lg:mt-16 overflow-hidden bg-white dark:bg-slate-950  lg:bg-gray-100 dark:lg:bg-slate-900 pt-0 sm:pt-3 text-gray-800 dark:text-gray-300 flex justify-center lg:items-center">
           <div className=" lg:w-full max-w-screen-lg bg-slate-50 sm:rounded-lg flex">
               {/* Form Section */}
               <div className="w-fit bg-white dark:bg-slate-950 lg:w-1/2 shadow-lg p-6 sm:p-12 flex flex-col">
